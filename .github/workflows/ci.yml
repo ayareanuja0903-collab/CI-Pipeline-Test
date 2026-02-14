@@ -36,5 +36,5 @@ jobs:
       #     path: ./
 
   run: |
-          echo "Username: ${{ vars.USER_NAME }}"
-          echo "Password: ${{ secrets.PASSWORD }}"
+          echo"Username:${{vars.USER_NAME}}"
+          echo"Password:${{secrets.PASSWORD}}"
