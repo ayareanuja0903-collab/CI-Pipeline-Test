@@ -35,5 +35,5 @@ jobs:
       #     name: nodejs-app-=artifacts
       #     path: ./
        run: |
-          echo "Username: ${{ variables.USER_NAME }}"
+          echo "Username: ${{ vars.USER_NAME }}"
           echo "Password: ${{ secrets.PASSWORD }}"
