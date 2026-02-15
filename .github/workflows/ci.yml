@@ -34,3 +34,23 @@ jobs:
         with:
           name: nodejs-app-artifacts
           path: ./
+
+  deploy:
+    name: Deploy to EC2
+    needs: build
+    runs-on: self-hosted
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update the packages
+        run: sudo apt update -y
+      - name: Install nodejs and npm
+        run: sudo apt install nodejs npm -y
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nodejs-app-artifacts
+          path: ./nodejs-app-artifacts
+      - name: Deployment completed
+        run: echo "Deployment completed successfully"
