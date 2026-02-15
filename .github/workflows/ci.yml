@@ -11,7 +11,6 @@ on:
 jobs: 
   build:
     runs-on: ubuntu-latest
-    # environment: 'qa'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -34,9 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nodejs-app-artifacts
-          path: .
-
-      # - name: Print Variables
-      #   run: |
-      #     echo "Username: ${{ vars.USER_NAME }}"
-      #     echo "Password: ${{ secrets.PASSWORD }}"
+          path: ./
