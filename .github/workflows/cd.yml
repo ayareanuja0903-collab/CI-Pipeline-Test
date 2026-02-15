@@ -4,14 +4,14 @@ on:
     workflows: ["Build the CI job for nodejs application"]
     types:
       - completed
-    branches:
-      - test-CICD
 
 jobs:
   deploy: 
     name: Deploying the nodejs application to ec2 instance as runner in aws ap-south-1
     runs-on: self-hosted
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: |
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'test-CICD'
     #matrix:
     #  os: [ubuntu-latest, amazonlinux2]
     steps:
@@ -21,7 +21,7 @@ jobs:
         run: sudo apt install nodejs npm -y
       - name: list all the files and folder in build directory
         run: ls        
-      - name: download the artifacts from build job 
+      - name: download the artifacts from build job
         uses: actions/download-artifact@v4
         with: 
           name: nodejs-app-artifacts
