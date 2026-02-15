@@ -4,11 +4,14 @@ on:
     workflows: ["Build the CI job for nodejs application"]
     types:
       - completed
+    branches:
+      - test-CICD
 
 jobs:
   deploy: 
     name: Deploying the nodejs application to ec2 instance as runner in aws ap-south-1
     runs-on: self-hosted
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     #matrix:
     #  os: [ubuntu-latest, amazonlinux2]
     steps:
