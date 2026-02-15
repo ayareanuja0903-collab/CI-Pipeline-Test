@@ -9,8 +9,7 @@ jobs:
   deploy: 
     name: Deploying the nodejs application to ec2 instance as runner in aws ap-south-1
     runs-on: self-hosted
-    #matrix:
-    #  os: [ubuntu-latest, amazonlinux2]
+  
     steps:
       - name: Update the packages 
         run: sudo apt update -y
