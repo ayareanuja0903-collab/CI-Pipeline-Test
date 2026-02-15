@@ -26,7 +26,7 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: List all files in build directory
+      - name: List all files in build directory.
         run: ls 
 
       - name: Upload artifact
@@ -53,4 +53,4 @@ jobs:
           name: nodejs-app-artifacts
           path: ./nodejs-app-artifacts
       - name: Deployment completed
-        run: echo "Deployment completed successfully"
+        run: echo "Deployment completed successfully."
